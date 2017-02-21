@@ -1,7 +1,7 @@
 {
 
     "name": "oat-sa/extension-lti-clientdiag",
-    "description" : "Grants access to the clien diagnostic functionalities using LTI",
+    "description" : "Grants access to the client diagnostic functionalities using LTI",
     "type" : "tao-extension",
     "authors" : [
         {
