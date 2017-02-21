@@ -1,7 +1,8 @@
 define({
     'Diagnostic' : {
         'actions' : {
-            'index' : 'taoClientDiagnostic/controller/Diagnostic/index'
+            'index' : 'taoClientDiagnostic/controller/Diagnostic/index',
+            'diagnostic' : 'taoClientDiagnostic/controller/Diagnostic/diagnostic'
         }
     }
 });
