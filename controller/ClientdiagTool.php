@@ -14,8 +14,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2016 (original work) Open Assessment Technologies SA;
- *
+ * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
  *
  */
 
@@ -33,6 +32,10 @@ class ClientdiagTool extends \taoLti_actions_ToolModule
      */
     public function run()
     {
-        
+        if ($this->hasAccess(Diagnostic::class, 'index')) {
+            $this->redirect(_url('index', 'Diagnostic'));
+        } else {
+            $this->returnError('You are not authorized to access this resource');
+        }
     }
 }
