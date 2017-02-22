@@ -15,27 +15,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
  * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
- *
  */
 
-namespace oat\ltiClientdiag\controller;
+namespace oat\ltiClientdiag\model;
 
-/**
- * Class ClientdiagTool
- * @package oat\ltiClientdiag\controller
- * @author Aleh Hutnikau, <hutnikau@1pt.com>
- */
-class ClientdiagTool extends \taoLti_actions_ToolModule
+interface LtiClientDiagnosticRoles
 {
-    /**
-     * run client diagnostic
-     */
-    public function run()
-    {
-        if ($this->hasAccess(Diagnostic::class, 'index')) {
-            $this->redirect(_url('index', 'Diagnostic'));
-        } else {
-            $this->returnError(__('You are not authorized to access this resource'));
-        }
-    }
+    const LTI_CLIENTDIAG_MANAGER = 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager';
 }
