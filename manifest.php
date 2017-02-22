@@ -19,7 +19,7 @@
  */
 
 use oat\tao\model\accessControl\func\AccessRule;
-use oat\LtiClientdiag\model\LtiClientDiagnosticRoles;
+use oat\ltiClientdiag\model\LtiClientDiagnosticRoles;
 
 return [
     'name' => 'ltiClientdiag',
