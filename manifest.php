@@ -18,11 +18,6 @@
  *
  */
 
-use oat\tao\model\user\TaoRoles;
-use oat\taoLti\models\classes\LtiRoles;
-use oat\ltiClientdiag\controller\ClientdiagTool;
-use oat\ltiClientdiag\controller\Diagnostic;
-
 return [
     'name' => 'ltiClientdiag',
     'label' => 'LTI Client Diagnostic',
@@ -36,8 +31,6 @@ return [
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager',
     'acl' => [
         array('grant', 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager', array('ext'=>'ltiClientdiag')),
-        array('grant', TaoRoles::ANONYMOUS, ClientdiagTool::class),
-        array('grant', LtiRoles::CONTEXT_TEACHING_ASSISTANT, Diagnostic::class),
     ],
     'install' => [
         'php' => [
