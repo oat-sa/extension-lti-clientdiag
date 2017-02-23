@@ -15,26 +15,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
  * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
- *
- *
  */
 
-namespace oat\ltiClientdiag\scripts\update;
+namespace oat\ltiClientdiag\model;
 
-/**
- * Class Updater
- * @package oat\ltiProctoring\scripts\update
- * @author Aleh Hutnikau, <hutnikau@1pt.com>
- */
-class Updater extends \common_ext_ExtensionUpdater
+interface LtiClientDiagnosticRoles
 {
-
-    /**
-     * @param $initialVersion
-     * @return string $versionUpdatedTo
-     */
-    public function update($initialVersion)
-    {
-
-    }
+    const LTI_CLIENTDIAG_MANAGER = 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager';
 }

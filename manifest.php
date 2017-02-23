@@ -18,10 +18,10 @@
  *
  */
 
+use oat\tao\model\accessControl\func\AccessRule;
+use oat\ltiClientdiag\model\LtiClientDiagnosticRoles;
 use oat\tao\model\user\TaoRoles;
-use oat\taoLti\models\classes\LtiRoles;
 use oat\ltiClientdiag\controller\ClientdiagTool;
-use oat\ltiClientdiag\controller\Diagnostic;
 
 return [
     'name' => 'ltiClientdiag',
@@ -31,13 +31,13 @@ return [
     'version' => '0.0.1',
     'author' => 'Open Assessment Technologies SA',
     'requires' => [
-        'taoLti' => '>=1.7.1'
+        'taoLti' => '>=1.7.1',
+        'taoClientDiagnostic' => '>=1.14.3',
     ],
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager',
     'acl' => [
-        array('grant', 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager', array('ext'=>'ltiClientdiag')),
-        array('grant', TaoRoles::ANONYMOUS, ClientdiagTool::class),
-        array('grant', LtiRoles::CONTEXT_TEACHING_ASSISTANT, Diagnostic::class),
+        [AccessRule::GRANT, LtiClientDiagnosticRoles::LTI_CLIENTDIAG_MANAGER, ['ext'=>'ltiClientdiag']],
+        [AccessRule::GRANT, TaoRoles::ANONYMOUS, ClientdiagTool::class],
     ],
     'install' => [
         'php' => [

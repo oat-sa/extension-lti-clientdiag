@@ -16,6 +16,7 @@
  *
  * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
  *
+ *
  */
 
 namespace oat\ltiClientdiag\controller;
@@ -35,7 +36,7 @@ class ClientdiagTool extends \taoLti_actions_ToolModule
         if ($this->hasAccess(Diagnostic::class, 'index')) {
             $this->redirect(_url('index', 'Diagnostic'));
         } else {
-            $this->returnError('You are not authorized to access this resource');
+            $this->returnError(__('You are not authorized to access this resource'));
         }
     }
 }
