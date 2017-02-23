@@ -43,7 +43,7 @@ class Diagnostic extends DiagnosticController
             'config' => json_encode($this->loadConfig()),
             'action' => 'index',
             'controller' => 'Diagnostic',
-            'extension' => 'taoClientDiagnostic'
+            'extension' => 'ltiClientdiag'
         );
 
         $userLabel = SessionManager::getSession()->getUserLabel();
@@ -62,7 +62,20 @@ class Diagnostic extends DiagnosticController
      */
     public function diagnostic()
     {
-        parent::diagnostic();
-        $this->setView('layout.tpl', 'taoClientDiagnostic');
+        $data = array(
+            'title'  => __('Readiness Check'),
+            'config' => json_encode($this->loadConfig()),
+            'action' => 'diagnostic',
+            'controller' => 'Diagnostic',
+            'extension' => 'ltiClientdiag'
+        );
+
+        $this->defaultData();
+        $this->setData('userLabel', SessionManager::getSession()->getUserLabel());
+        $this->setData('cls', 'diagnostic-runner');
+        $this->setData('data', $data);
+        $this->setData('content-template', 'pages/index.tpl');
+        $this->setData('content-template-ext', 'taoClientDiagnostic');
+        $this->setView('layout.tpl');
     }
 }
