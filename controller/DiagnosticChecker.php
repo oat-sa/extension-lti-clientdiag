@@ -20,6 +20,10 @@
 
 namespace oat\ltiClientdiag\controller;
 
+use oat\taoClientDiagnostic\model\storage\Storage;
+use oat\taoClientDiagnostic\exception\StorageException;
+use \taoLti_models_classes_LtiLaunchData as LtiLaunchData;
+
 /**
  * Class DiagnosticChecker
  *
@@ -27,5 +31,27 @@ namespace oat\ltiClientdiag\controller;
  */
 class DiagnosticChecker extends \oat\taoClientDiagnostic\controller\DiagnosticChecker
 {
+    /**
+     * Register data from the front end
+     */
+    public function storeData()
+    {
+        $data = $this->getData();
+        $session = \common_session_SessionManager::getSession();
+        if ($session instanceof \taoLti_models_classes_TaoLtiSession) {
+            $contextId = $session->getLaunchData()->getVariable(LtiLaunchData::CONTEXT_ID);
+            $data[Storage::DIAGNOSTIC_CONTEXT_ID] = $contextId;
+        }
 
+        $id = $this->getId();
+
+        try {
+            $storageService = $this->getServiceManager()->get(Storage::SERVICE_ID);
+            $storageService->store($id, $data);
+            $this->returnJson(array('success' => true, 'type' => 'success'));
+        } catch (StorageException $e) {
+            \common_Logger::i($e->getMessage());
+            $this->returnJson(array('success' => false, 'type' => 'error'));
+        }
+    }
 }

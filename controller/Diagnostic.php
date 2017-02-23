@@ -22,6 +22,9 @@ namespace oat\ltiClientdiag\controller;
 
 use \oat\taoClientDiagnostic\controller\Diagnostic as DiagnosticController;
 use common_session_SessionManager as SessionManager;
+use oat\oatbox\service\ServiceNotFoundException;
+use oat\taoClientDiagnostic\model\storage\Storage;
+use \taoLti_models_classes_LtiLaunchData as LtiLaunchData;
 
 /**
  * Client diagnostic controller
@@ -78,4 +81,31 @@ class Diagnostic extends DiagnosticController
         $this->setData('content-template-ext', 'taoClientDiagnostic');
         $this->setView('layout.tpl');
     }
+
+    /**
+     * @return array
+     */
+    protected function loadConfig()
+    {
+        $config = array_merge(
+            parent::loadConfig(),
+            \common_ext_ExtensionsManager::singleton()->getExtensionById('ltiClientdiag')->getConfig('clientDiag')
+        );
+
+        return $config;
+    }
+
+    /**
+     * @param array $defaults
+     * @return array
+     */
+    protected function getRequestOptions(array $defaults = [])
+    {
+        $options = parent::getRequestOptions($defaults);
+        $session = \common_session_SessionManager::getSession();
+        $contextId = $session->getLaunchData()->getVariable(LtiLaunchData::CONTEXT_ID);
+        $options['filter'] = [Storage::DIAGNOSTIC_CONTEXT_ID => $contextId];
+        return $options;
+    }
+
 }
