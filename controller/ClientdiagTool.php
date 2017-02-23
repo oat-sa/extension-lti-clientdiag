@@ -16,6 +16,7 @@
  *
  * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
  *
+ *
  */
 
 namespace oat\ltiClientdiag\controller;
