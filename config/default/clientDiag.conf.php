@@ -15,34 +15,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
  * Copyright (c) 2017 (original work) Open Assessment Technologies SA;
- *
- *
  */
-
-namespace oat\ltiClientdiag\scripts\update;
 
 /**
- * Class Updater
- * @package oat\ltiProctoring\scripts\update
- * @author Aleh Hutnikau, <hutnikau@1pt.com>
+ * Default client diag config
  */
-class Updater extends \common_ext_ExtensionUpdater
-{
-
-    /**
-     * @param $initialVersion
-     * @return string $versionUpdatedTo
-     */
-    public function update($initialVersion)
-    {
-        if ($this->isVersion('0.0.1')) {
-            $extension = \common_ext_ExtensionsManager::singleton()->getExtensionById('ltiClientdiag');
-            $extension->setConfig('clientDiag', [
-                'extension' => 'ltiClientdiag'
-            ]);
-
-            $this->setVersion('0.1.0');
-        }
-
-    }
-}
+return array(
+    'extension' => 'ltiClientdiag',
+);
