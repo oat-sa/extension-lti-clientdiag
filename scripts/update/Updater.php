@@ -20,6 +20,8 @@
  */
 
 namespace oat\ltiClientdiag\scripts\update;
+use oat\ltiClientdiag\model\LtiClientDiagnosticRoles;
+use oat\taoLti\models\classes\LtiRoles;
 
 /**
  * Class Updater
@@ -44,6 +46,11 @@ class Updater extends \common_ext_ExtensionUpdater
             $this->setVersion('0.1.0');
         }
 
-        $this->skip('0.1.0', '0.1.2');
+        $this->skip('0.1.0', '0.1.1');
+
+        if ($this->isVersion('0.1.1')) {
+            \tao_models_classes_RoleService::singleton()->unincludeRole(new \core_kernel_classes_Resource(LtiRoles::CONTEXT_TEACHING_ASSISTANT), new \core_kernel_classes_Resource(LtiClientDiagnosticRoles::LTI_CLIENTDIAG_MANAGER));
+            $this->setVersion('0.1.2');
+        }
     }
 }
