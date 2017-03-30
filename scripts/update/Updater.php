@@ -21,6 +21,8 @@
 
 namespace oat\ltiClientdiag\scripts\update;
 use oat\ltiClientdiag\model\LtiClientDiagnosticRoles;
+use oat\tao\model\accessControl\func\AccessRule;
+use oat\tao\model\accessControl\func\AclProxy;
 use oat\taoLti\models\classes\LtiRoles;
 
 /**
@@ -50,6 +52,7 @@ class Updater extends \common_ext_ExtensionUpdater
 
         if ($this->isVersion('0.1.1')) {
             \tao_models_classes_RoleService::singleton()->unincludeRole(new \core_kernel_classes_Resource(LtiRoles::CONTEXT_TEACHING_ASSISTANT), new \core_kernel_classes_Resource(LtiClientDiagnosticRoles::LTI_CLIENTDIAG_MANAGER));
+            AclProxy::applyRule(new AccessRule('grant', LtiRoles::CONTEXT_TEACHING_ASSISTANT, ['ext'=>'ltiClientdiag']));
             $this->setVersion('0.1.2');
         }
     }
