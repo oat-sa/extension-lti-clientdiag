@@ -21,6 +21,7 @@
 use oat\tao\model\accessControl\func\AccessRule;
 use oat\ltiClientdiag\model\LtiClientDiagnosticRoles;
 use oat\tao\model\user\TaoRoles;
+use oat\taoLti\models\classes\LtiRoles;
 use oat\ltiClientdiag\controller\ClientdiagTool;
 
 return [
@@ -36,15 +37,12 @@ return [
     ],
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager',
     'acl' => [
-        [AccessRule::GRANT, LtiClientDiagnosticRoles::LTI_CLIENTDIAG_MANAGER, ['ext'=>'ltiClientdiag']],
+        [AccessRule::GRANT, LtiRoles::CONTEXT_TEACHING_ASSISTANT, ['ext'=>'ltiClientdiag']],
         [AccessRule::GRANT, TaoRoles::ANONYMOUS, ClientdiagTool::class],
     ],
     'install' => [
         'php' => [
 
-        ],
-        'rdf' =>[
-            __DIR__ . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . 'install' . DIRECTORY_SEPARATOR . 'ltiroles.rdf'
         ]
     ],
     'uninstall' => [],
