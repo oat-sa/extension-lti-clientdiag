@@ -7,6 +7,5 @@
   
   <!-- Context roles -->
   <rdf:Description rdf:about="http://www.imsglobal.org/imspurl/lis/v1/vocab/membership#TeachingAssistant">
-    <generis:includesRole rdf:resource="http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager"/>
   </rdf:Description>
 </rdf:RDF>

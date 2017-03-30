@@ -20,6 +20,11 @@
  */
 
 namespace oat\ltiClientdiag\scripts\update;
+use oat\ltiClientdiag\model\LtiClientDiagnosticRoles;
+use oat\tao\model\accessControl\func\AccessRule;
+use oat\tao\model\accessControl\func\AclProxy;
+use oat\tao\scripts\update\OntologyUpdater;
+use oat\taoLti\models\classes\LtiRoles;
 
 /**
  * Class Updater
@@ -45,5 +50,11 @@ class Updater extends \common_ext_ExtensionUpdater
         }
 
         $this->skip('0.1.0', '0.1.1');
+
+        if ($this->isVersion('0.1.1')) {
+            OntologyUpdater::syncModels();
+            AclProxy::applyRule(new AccessRule('grant', LtiRoles::CONTEXT_TEACHING_ASSISTANT, ['ext'=>'ltiClientdiag']));
+            $this->setVersion('0.1.2');
+        }
     }
 }
