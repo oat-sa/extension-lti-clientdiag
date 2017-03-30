@@ -42,6 +42,9 @@ return [
     'install' => [
         'php' => [
 
+        ],
+        'rdf' =>[
+            __DIR__ . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . 'install' . DIRECTORY_SEPARATOR . 'ltiroles.rdf'
         ]
     ],
     'uninstall' => [],
