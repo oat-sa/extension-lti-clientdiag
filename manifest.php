@@ -19,8 +19,8 @@
  */
 
 use oat\tao\model\accessControl\func\AccessRule;
-use oat\ltiClientdiag\model\LtiClientDiagnosticRoles;
 use oat\tao\model\user\TaoRoles;
+use oat\taoLti\models\classes\LtiRoles;
 use oat\ltiClientdiag\controller\ClientdiagTool;
 
 return [
@@ -28,7 +28,7 @@ return [
     'label' => 'LTI Client Diagnostic',
     'description' => 'Grants access to the client diagnostic functionality using LTI',
     'license' => 'GPL-2.0',
-    'version' => '0.1.1',
+    'version' => '0.1.2',
     'author' => 'Open Assessment Technologies SA',
     'requires' => [
         'taoLti' => '>=1.7.1',
@@ -36,7 +36,7 @@ return [
     ],
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager',
     'acl' => [
-        [AccessRule::GRANT, LtiClientDiagnosticRoles::LTI_CLIENTDIAG_MANAGER, ['ext'=>'ltiClientdiag']],
+        [AccessRule::GRANT, LtiRoles::CONTEXT_TEACHING_ASSISTANT, ['ext'=>'ltiClientdiag']],
         [AccessRule::GRANT, TaoRoles::ANONYMOUS, ClientdiagTool::class],
     ],
     'install' => [
