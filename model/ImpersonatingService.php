@@ -22,14 +22,13 @@ namespace oat\ltiClientdiag\model;
 use oat\oatbox\service\ConfigurableService;
 use oat\taoDeliveryRdf\model\DeliveryAssemblyService;
 
-abstract class ImpersonatingService extends ConfigurableService
+class ImpersonatingService extends ConfigurableService
 {
-    const SERVICE_ID = 'ltiClientdiag/PretenderTestTaking';
+    const SERVICE_ID = 'ltiClientdiag/ImpersonatingService';
 
     const LAUNCH_URL_EXTENSION = 'extension';
     const LAUNCH_URL_CONTROLLER = 'controller';
     const LAUNCH_URL_ACTION = 'action';
-    const RETURN_URL = 'return_url';
     const DELIVERY_PROPERTY = 'delivery_property';
     const DELIVERY_PROPERTY_VALUE = 'delivery_property_value';
 
@@ -60,8 +59,4 @@ abstract class ImpersonatingService extends ConfigurableService
         return $deliveries;
     }
 
-    public function getReturnUrl()
-    {
-        return is_null($this->getOption(self::RETURN_URL))?$this->getOption(self::RETURN_URL):'';
-    }
 }
