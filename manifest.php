@@ -32,7 +32,7 @@ return [
     'author' => 'Open Assessment Technologies SA',
     'requires' => [
         'taoLti' => '>=1.7.1',
-        'taoClientDiagnostic' => '>=1.14.3',
+        'taoClientDiagnostic' => '>=1.16.0',
     ],
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager',
     'acl' => [
