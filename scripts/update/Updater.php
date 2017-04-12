@@ -56,5 +56,10 @@ class Updater extends \common_ext_ExtensionUpdater
             AclProxy::applyRule(new AccessRule('grant', LtiRoles::CONTEXT_TEACHING_ASSISTANT, ['ext'=>'ltiClientdiag']));
             $this->setVersion('0.1.2');
         }
+
+        if ($this->isVersion('0.1.2')) {
+            AclProxy::applyRule(new AccessRule('grant', INSTANCE_ROLE_DELIVERY, ['ext'=>'ltiClientdiag', 'mod' => 'Diagnostic', 'act' => 'returnToLti']));
+            $this->setVersion('0.2.0');
+        }
     }
 }

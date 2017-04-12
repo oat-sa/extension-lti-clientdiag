@@ -37,6 +37,7 @@ return [
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager',
     'acl' => [
         [AccessRule::GRANT, LtiRoles::CONTEXT_TEACHING_ASSISTANT, ['ext'=>'ltiClientdiag']],
+        [AccessRule::GRANT, INSTANCE_ROLE_DELIVERY , ['ext'=>'ltiClientdiag', 'mod' => 'Diagnostic', 'act' => 'returnToLti']],
         [AccessRule::GRANT, TaoRoles::ANONYMOUS, ClientdiagTool::class],
     ],
     'install' => [
