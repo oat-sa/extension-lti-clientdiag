@@ -28,15 +28,16 @@ return [
     'label' => 'LTI Client Diagnostic',
     'description' => 'Grants access to the client diagnostic functionality using LTI',
     'license' => 'GPL-2.0',
-    'version' => '0.1.2',
+    'version' => '0.2.0',
     'author' => 'Open Assessment Technologies SA',
     'requires' => [
         'taoLti' => '>=1.7.1',
-        'taoClientDiagnostic' => '>=1.14.3',
+        'taoClientDiagnostic' => '>=1.16.0',
     ],
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager',
     'acl' => [
         [AccessRule::GRANT, LtiRoles::CONTEXT_TEACHING_ASSISTANT, ['ext'=>'ltiClientdiag']],
+        [AccessRule::GRANT, INSTANCE_ROLE_DELIVERY , ['ext'=>'ltiClientdiag', 'mod' => 'Diagnostic', 'act' => 'returnToLti']],
         [AccessRule::GRANT, TaoRoles::ANONYMOUS, ClientdiagTool::class],
     ],
     'install' => [
