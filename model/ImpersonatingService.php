@@ -44,9 +44,9 @@ class ImpersonatingService extends ConfigurableService
 
     public function getDeliveries()
     {
-        $deliveries = [];
-        if(!is_null($this->getOption(self::DELIVERY_PROPERTY))){
-            DeliveryAssemblyService::singleton()->getRootClass()->searchInstances(
+        if(!is_null($this->getOption(self::DELIVERY_PROPERTY)) && !is_null($this->getOption(self::DELIVERY_PROPERTY_VALUE))){
+
+            $deliveries = DeliveryAssemblyService::singleton()->getRootClass()->searchInstances(
                 [
                     $this->getOption(self::DELIVERY_PROPERTY) => $this->getOption(self::DELIVERY_PROPERTY_VALUE)
                 ],

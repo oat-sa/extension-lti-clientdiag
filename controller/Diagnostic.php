@@ -179,7 +179,7 @@ class Diagnostic extends DiagnosticController
             $user = new \core_kernel_users_GenerisUser($student);
             $sessionSubstitutionService->substituteSession($user);
         } catch(ServiceNotFoundException $e){
-            $redirectUrl = $this->redirect(_url('deliveries'));
+            $redirectUrl = _url('deliveries');
         }
 
 
