@@ -58,5 +58,10 @@ class Updater extends \common_ext_ExtensionUpdater
         }
 
         $this->skip('0.1.2', '1.0.0');
+
+        if ($this->isVersion('1.0.0')) {
+            AclProxy::applyRule(new AccessRule('grant', LtiRoles::CONTEXT_LEARNER, ['ext'=>'ltiClientdiag']));
+            $this->setVersion('1.1.0');
+        }
     }
 }
