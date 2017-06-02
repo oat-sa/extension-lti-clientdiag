@@ -20,6 +20,7 @@
 
 namespace oat\ltiClientdiag\controller;
 
+use oat\tao\model\theme\ThemeService;
 use \oat\taoClientDiagnostic\controller\Diagnostic as DiagnosticController;
 use common_session_SessionManager as SessionManager;
 use oat\oatbox\service\ServiceNotFoundException;
@@ -72,6 +73,13 @@ class Diagnostic extends DiagnosticController
             'controller' => 'Diagnostic',
             'extension' => 'ltiClientdiag'
         );
+
+        $themeService = $this->getServiceManager()->get(ThemeService::SERVICE_ID);
+        $theme = $themeService->getTheme();
+        $configurableText = $theme->getTextFromArray([
+            'diagBrowserCheck'
+        ]);
+        $this->setData('configurableText', json_encode($configurableText));
 
         $this->defaultData();
         $this->setData('userLabel', SessionManager::getSession()->getUserLabel());

@@ -20,6 +20,10 @@ use oat\tao\model\theme\Theme;
     <body class="diagnostic-scope">
 <?php Template::inc('blocks/requirement-check.tpl', 'tao'); ?>
         <div class="content-wrap">
+            <!-- todo: make this configuratble, check is Headless method -->
+            <header class="dark-bar clearfix">
+                <?= Layout::renderThemeTemplate(Theme::CONTEXT_BACKOFFICE, 'header-logo') ?>
+            </header>
             <div id="feedback-box"></div>
             <?php Template::inc(get_data('content-template'), get_data('content-template-ext')); ?>
         </div>
