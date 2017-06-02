@@ -77,7 +77,12 @@ class Diagnostic extends DiagnosticController
         $themeService = $this->getServiceManager()->get(ThemeService::SERVICE_ID);
         $theme = $themeService->getTheme();
         $configurableText = $theme->getTextFromArray([
-            'diagBrowserCheck'
+            'diagInstructions',
+            'diagBrowserCheckResult',
+            'diagPerformancesCheckResult',
+            'diagBandwithCheckResult',
+            'diagUploadCheckResult',
+            'diagTotalCheckResult'
         ]);
         $this->setData('configurableText', json_encode($configurableText));
 
