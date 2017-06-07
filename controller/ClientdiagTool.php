@@ -33,8 +33,8 @@ class ClientdiagTool extends \taoLti_actions_ToolModule
      */
     public function run()
     {
-        if ($this->hasAccess(Diagnostic::class, 'index')) {
-            $this->redirect(_url('index', 'Diagnostic'));
+        if ($this->hasAccess(Diagnostic::class, 'diagnostic')) {
+            $this->redirect(_url('diagnostic', 'Diagnostic'));
         } else {
             $this->returnError(__('You are not authorized to access this resource'));
         }

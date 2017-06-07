@@ -24,6 +24,7 @@ use oat\tao\model\theme\ThemeService;
 use \oat\taoClientDiagnostic\controller\Diagnostic as DiagnosticController;
 use common_session_SessionManager as SessionManager;
 use oat\taoClientDiagnostic\model\storage\Storage;
+use oat\taoLti\models\classes\LtiRoles;
 use oat\taoLti\models\classes\theme\LtiHeadless;
 use \taoLti_models_classes_LtiLaunchData as LtiLaunchData;
 
@@ -117,9 +118,14 @@ class Diagnostic extends DiagnosticController
     protected function getRequestOptions(array $defaults = [])
     {
         $options = parent::getRequestOptions($defaults);
-        $session = \common_session_SessionManager::getSession();
-        $contextId = $session->getLaunchData()->getVariable(LtiLaunchData::CONTEXT_ID);
-        $options['filter'] = [Storage::DIAGNOSTIC_CONTEXT_ID => $contextId];
+        $user = SessionManager::getSession()->getUser();
+
+        if (!in_array(LtiRoles::CONTEXT_TEACHING_ASSISTANT, $user->getRoles())) {
+            $user = \common_session_SessionManager::getSession()->getUser();
+            $userId = $user->getIdentifier();
+            $options['filter'] = [Storage::DIAGNOSTIC_USER_ID => $userId];
+        }
+
         return $options;
     }
 
