@@ -19,12 +19,21 @@ use oat\tao\model\theme\Theme;
     </head>
     <body class="diagnostic-scope">
 <?php Template::inc('blocks/requirement-check.tpl', 'tao'); ?>
-        <div class="content-wrap">
+        <div class="content-wrap<?php if (!get_data('showControls')) :?> no-controls<?php endif; ?>">
+            <?php if (get_data('showControls')){ ?>
+                <header class="dark-bar clearfix">
+                    <?= Layout::renderThemeTemplate(Theme::CONTEXT_BACKOFFICE, 'header-logo') ?>
+                </header>
+            <?php }?>
+
+
             <div id="feedback-box"></div>
             <?php Template::inc(get_data('content-template'), get_data('content-template-ext')); ?>
         </div>
 
-        <?= Layout::renderThemeTemplate(Theme::CONTEXT_BACKOFFICE, 'footer') ?>
+        <?php if (get_data('showControls')){ ?>
+            <?= Layout::renderThemeTemplate(Theme::CONTEXT_BACKOFFICE, 'footer') ?>
+        <?php }?>
 
         <div class="loading-bar"></div>
     </body>

@@ -63,5 +63,7 @@ class Updater extends \common_ext_ExtensionUpdater
             AclProxy::applyRule(new AccessRule('grant', LtiRoles::CONTEXT_LEARNER, ['ext'=>'ltiClientdiag']));
             $this->setVersion('1.1.0');
         }
+
+        $this->skip('1.1.0', '1.2.0');
     }
 }
