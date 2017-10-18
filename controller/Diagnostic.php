@@ -129,7 +129,7 @@ class Diagnostic extends DiagnosticController
      */
     protected function showControls() {
         $themeService = $this->getServiceManager()->get(ThemeService::SERVICE_ID);
-        if ($themeService instanceof LtiHeadless) {
+        if ($themeService instanceof ThemeService || $themeService instanceof LtiHeadless) {
             return !$themeService->isHeadless();
         }
         return false;
