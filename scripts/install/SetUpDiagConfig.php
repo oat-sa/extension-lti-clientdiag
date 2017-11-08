@@ -18,7 +18,7 @@
  *
  */
 
-namespace oat\taoAct\scripts\install;
+namespace oat\ltiClientdiag\scripts\install;
 
 
 use oat\ltiClientdiag\model\DiagnosticService;
