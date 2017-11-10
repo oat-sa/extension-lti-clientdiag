@@ -20,6 +20,7 @@
  */
 
 namespace oat\ltiClientdiag\scripts\update;
+use oat\ltiClientdiag\model\DiagnosticService;
 use oat\ltiClientdiag\model\LtiClientDiagnosticRoles;
 use oat\tao\model\accessControl\func\AccessRule;
 use oat\tao\model\accessControl\func\AclProxy;
@@ -65,5 +66,15 @@ class Updater extends \common_ext_ExtensionUpdater
         }
 
         $this->skip('1.1.0', '1.2.2');
+
+        if($this->isVersion('1.2.2')){
+            $service = new DiagnosticService();
+
+            $this->getServiceManager()->register(DiagnosticService::SERVICE_ID, $service);
+            $this->setVersion('1.3.0');
+        }
+
+        $this->skip('1.3.0', '1.3.1');
+
     }
 }
