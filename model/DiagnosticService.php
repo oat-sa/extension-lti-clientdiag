@@ -26,36 +26,4 @@ use oat\taoLti\models\classes\theme\LtiThemeDetailsProvider;
 
 class DiagnosticService extends ParentDiagnosticService implements DiagnosticServiceInterface
 {
-
-    /**
-     * @inheritdoc
-     */
-    public function getTesters()
-    {
-        $testers = parent::getTesters();
-        $session = \common_session_SessionManager::getSession();
-        if ($session instanceof \taoLti_models_classes_TaoLtiSession) {
-            $launchData = $session->getLaunchData();
-            $theme = ($launchData->hasVariable(LtiThemeDetailsProvider::LTI_CUSTOM_THEME_VARIABLE)) ? $launchData->getVariable(LtiThemeDetailsProvider::LTI_CUSTOM_THEME_VARIABLE) : $this->getDefaultTheme();
-            $samples = $testers['testers']['performance']['samples'];
-            if (is_array(reset($samples))) {
-                if (array_key_exists($theme, $samples)) {
-                    $testers['testers']['performance']['samples'] = $samples[$theme];
-                } else {
-                    $testers['testers']['performance']['samples'] = array_shift($samples);
-                }
-            }
-        }
-
-        return $testers;
-
-    }
-
-    protected function getDefaultTheme()
-    {
-        /** @var ThemeService $themeService */
-        $themeService = $this->getServiceManager()->get(ThemeService::SERVICE_ID);
-        $themeId = $themeService->getOption(ThemeService::OPTION_CURRENT);
-        return $themeId;
-    }
 }
