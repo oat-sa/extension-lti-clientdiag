@@ -23,39 +23,10 @@ use oat\tao\model\theme\ThemeService;
 use oat\taoClientDiagnostic\model\diagnostic\DiagnosticService as ParentDiagnosticService;
 use oat\taoClientDiagnostic\model\diagnostic\DiagnosticServiceInterface;
 use oat\taoLti\models\classes\theme\LtiThemeDetailsProvider;
-
+/**
+ * No longer required, left in place for backward compatibility
+ * @deprecated
+ */
 class DiagnosticService extends ParentDiagnosticService implements DiagnosticServiceInterface
 {
-
-    /**
-     * @inheritdoc
-     */
-    public function getTesters()
-    {
-        $testers = parent::getTesters();
-
-        /** @var \taoLti_models_classes_LtiLaunchData $launchData */
-        $launchData = \common_session_SessionManager::getSession()->getLaunchData();
-        $theme = ($launchData->hasVariable(LtiThemeDetailsProvider::LTI_CUSTOM_THEME_VARIABLE)) ? $launchData->getVariable(LtiThemeDetailsProvider::LTI_CUSTOM_THEME_VARIABLE) : $this->getDefaultTheme();
-
-        $samples = $testers['testers']['performance']['samples'];
-        if (is_array(reset($samples))) {
-            if (array_key_exists($theme, $samples)) {
-                $testers['testers']['performance']['samples'] = $samples[$theme];
-            } else {
-                $testers['testers']['performance']['samples'] = array_shift($samples);
-            }
-        }
-
-        return $testers;
-
-    }
-
-    protected function getDefaultTheme()
-    {
-        /** @var ThemeService $themeService */
-        $themeService = $this->getServiceManager()->get(ThemeService::SERVICE_ID);
-        $themeId = $themeService->getOption(ThemeService::OPTION_CURRENT);
-        return $themeId;
-    }
 }
