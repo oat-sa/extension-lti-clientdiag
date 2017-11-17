@@ -42,7 +42,6 @@ return [
     ],
     'install' => [
         'php' => [
-            \oat\ltiClientdiag\scripts\install\SetUpDiagConfig::class
         ],
         'rdf' =>[
             __DIR__ . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . 'install' . DIRECTORY_SEPARATOR . 'ltiroles.rdf'

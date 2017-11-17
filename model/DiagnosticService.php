@@ -23,7 +23,10 @@ use oat\tao\model\theme\ThemeService;
 use oat\taoClientDiagnostic\model\diagnostic\DiagnosticService as ParentDiagnosticService;
 use oat\taoClientDiagnostic\model\diagnostic\DiagnosticServiceInterface;
 use oat\taoLti\models\classes\theme\LtiThemeDetailsProvider;
-
+/**
+ * No longer required, left in place for backward compatibility
+ * @deprecated
+ */
 class DiagnosticService extends ParentDiagnosticService implements DiagnosticServiceInterface
 {
 }
