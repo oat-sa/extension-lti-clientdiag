@@ -33,17 +33,17 @@ class DiagnosticService extends ParentDiagnosticService implements DiagnosticSer
     public function getTesters()
     {
         $testers = parent::getTesters();
-
-        /** @var \taoLti_models_classes_LtiLaunchData $launchData */
-        $launchData = \common_session_SessionManager::getSession()->getLaunchData();
-        $theme = ($launchData->hasVariable(LtiThemeDetailsProvider::LTI_CUSTOM_THEME_VARIABLE)) ? $launchData->getVariable(LtiThemeDetailsProvider::LTI_CUSTOM_THEME_VARIABLE) : $this->getDefaultTheme();
-
-        $samples = $testers['testers']['performance']['samples'];
-        if (is_array(reset($samples))) {
-            if (array_key_exists($theme, $samples)) {
-                $testers['testers']['performance']['samples'] = $samples[$theme];
-            } else {
-                $testers['testers']['performance']['samples'] = array_shift($samples);
+        $session = \common_session_SessionManager::getSession();
+        if ($session instanceof \taoLti_models_classes_TaoLtiSession) {
+            $launchData = $session->getLaunchData();
+            $theme = ($launchData->hasVariable(LtiThemeDetailsProvider::LTI_CUSTOM_THEME_VARIABLE)) ? $launchData->getVariable(LtiThemeDetailsProvider::LTI_CUSTOM_THEME_VARIABLE) : $this->getDefaultTheme();
+            $samples = $testers['testers']['performance']['samples'];
+            if (is_array(reset($samples))) {
+                if (array_key_exists($theme, $samples)) {
+                    $testers['testers']['performance']['samples'] = $samples[$theme];
+                } else {
+                    $testers['testers']['performance']['samples'] = array_shift($samples);
+                }
             }
         }
 
