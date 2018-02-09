@@ -21,12 +21,14 @@
 
 namespace oat\ltiClientdiag\controller;
 
+use oat\taoLti\controller\ToolModule;
+
 /**
  * Class ClientdiagTool
  * @package oat\ltiClientdiag\controller
  * @author Aleh Hutnikau, <hutnikau@1pt.com>
  */
-class ClientdiagTool extends \taoLti_actions_ToolModule
+class ClientdiagTool extends ToolModule
 {
     /**
      * run client diagnostic
