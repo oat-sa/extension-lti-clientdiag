@@ -22,7 +22,8 @@ namespace oat\ltiClientdiag\controller;
 
 use oat\taoClientDiagnostic\model\storage\Storage;
 use oat\taoClientDiagnostic\exception\StorageException;
-use \taoLti_models_classes_LtiLaunchData as LtiLaunchData;
+use oat\taoLti\models\classes\LtiLaunchData;
+use oat\taoLti\models\classes\TaoLtiSession;
 
 /**
  * Class DiagnosticChecker
@@ -33,12 +34,16 @@ class DiagnosticChecker extends \oat\taoClientDiagnostic\controller\DiagnosticCh
 {
     /**
      * Register data from the front end
+     *
+     * @throws \common_exception_Error
+     * @throws \common_exception_MissingParameter
+     * @throws \oat\taoLti\models\classes\LtiVariableMissingException
      */
     public function storeData()
     {
         $data = $this->getData();
         $session = \common_session_SessionManager::getSession();
-        if ($session instanceof \taoLti_models_classes_TaoLtiSession) {
+        if ($session instanceof TaoLtiSession) {
             $contextId = $session->getLaunchData()->getVariable(LtiLaunchData::CONTEXT_ID);
             $data[Storage::DIAGNOSTIC_CONTEXT_ID] = $contextId;
         }
