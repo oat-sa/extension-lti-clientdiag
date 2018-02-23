@@ -26,7 +26,6 @@ use common_session_SessionManager as SessionManager;
 use oat\taoClientDiagnostic\model\storage\Storage;
 use oat\taoLti\models\classes\LtiRoles;
 use oat\taoLti\models\classes\theme\LtiHeadless;
-use \taoLti_models_classes_LtiLaunchData as LtiLaunchData;
 
 /**
  * Client diagnostic controller
@@ -37,6 +36,10 @@ class Diagnostic extends DiagnosticController
     /**
      * Display the list of all readiness checks performed on the given test center
      * It also allows launching new ones.
+     *
+     * @throws \common_exception_Error
+     * @throws \common_exception_NoImplementation
+     * @throws \common_ext_ExtensionException
      */
     public function index()
     {
@@ -65,6 +68,8 @@ class Diagnostic extends DiagnosticController
 
     /**
      * Display the diagnostic runner
+     * @throws \common_exception_Error
+     * @throws \common_ext_ExtensionException
      */
     public function diagnostic()
     {
@@ -93,6 +98,7 @@ class Diagnostic extends DiagnosticController
 
     /**
      * @return array
+     * @throws \common_ext_ExtensionException
      */
     protected function loadConfig()
     {
@@ -107,6 +113,7 @@ class Diagnostic extends DiagnosticController
     /**
      * @param array $defaults
      * @return array
+     * @throws \common_exception_Error
      */
     protected function getRequestOptions(array $defaults = [])
     {
