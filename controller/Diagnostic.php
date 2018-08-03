@@ -20,7 +20,7 @@
 
 namespace oat\ltiClientdiag\controller;
 
-use oat\tao\model\theme\ThemeService;
+use oat\tao\model\theme\ThemeServiceInterface;
 use \oat\taoClientDiagnostic\controller\Diagnostic as DiagnosticController;
 use common_session_SessionManager as SessionManager;
 use oat\taoClientDiagnostic\model\storage\Storage;
@@ -81,7 +81,8 @@ class Diagnostic extends DiagnosticController
             'extension' => 'ltiClientdiag'
         );
 
-        $themeService = $this->getServiceManager()->get(ThemeService::SERVICE_ID);
+        /** @var ThemeServiceInterface $themeService */
+        $themeService = $this->getServiceManager()->get(ThemeServiceInterface::SERVICE_ID);
         $theme = $themeService->getTheme();
         $configurableText = $theme->getAllTexts();
         $this->setData('configurableText', json_encode($configurableText));
@@ -135,8 +136,8 @@ class Diagnostic extends DiagnosticController
      * @return boolean
      */
     protected function showControls() {
-        $themeService = $this->getServiceManager()->get(ThemeService::SERVICE_ID);
-        if ($themeService instanceof ThemeService || $themeService instanceof LtiHeadless) {
+        $themeService = $this->getServiceManager()->get(ThemeServiceInterface::SERVICE_ID);
+        if ($themeService instanceof ThemeServiceInterface || $themeService instanceof LtiHeadless) {
             return !$themeService->isHeadless();
         }
         return false;
