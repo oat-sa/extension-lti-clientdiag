@@ -28,6 +28,7 @@ module.exports = function(grunt) {
             lticlientdiag : {
                 options : {
                     extension : 'ltiClientdiag',
+                    dependencies: ['taoClientDiagnostic'],
                     outputDir : 'loader',
                     bundles : [{
                         name : 'ltiClientdiag',
