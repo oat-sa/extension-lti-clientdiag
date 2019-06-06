@@ -76,5 +76,19 @@ class Updater extends \common_ext_ExtensionUpdater
 
         $this->skip('1.3.0', '2.0.1');
 
+        if ($this->isVersion('2.0.1')) {
+            // Update clientDiag.conf.php
+            $extension = $this->getServiceManager()
+                ->get(\common_ext_ExtensionsManager::SERVICE_ID)
+                ->getExtensionById('ltiClientdiag');
+            $oldClientDiagConfig = $extension->getConfig('clientDiag');
+
+            $extension->setConfig('clientDiag', [
+                'diagnostic' => $oldClientDiagConfig,
+            ]);
+
+            $this->setVersion('2.0.2');
+        }
+
     }
 }
