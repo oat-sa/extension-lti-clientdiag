@@ -103,7 +103,7 @@ class Diagnostic extends DiagnosticController
      */
     protected function loadConfig()
     {
-        $config = array_merge(
+        $config = array_merge_recursive(
             parent::loadConfig(),
             \common_ext_ExtensionsManager::singleton()->getExtensionById('ltiClientdiag')->getConfig('clientDiag')
         );
