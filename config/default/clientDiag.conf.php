@@ -21,5 +21,7 @@
  * Default client diag config
  */
 return array(
-    'extension' => 'ltiClientdiag',
+    'diagnostic' => array(
+        'extension' => 'ltiClientdiag',
+    )
 );
