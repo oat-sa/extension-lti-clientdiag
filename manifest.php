@@ -28,7 +28,7 @@ return [
     'label' => 'LTI Client Diagnostic',
     'description' => 'Grants access to the client diagnostic functionality using LTI',
     'license' => 'GPL-2.0',
-    'version' => '2.0.3',
+    'version' => '2.1.0',
     'author' => 'Open Assessment Technologies SA',
     'requires' => [
         'taoLti' => '>=7.0.0',
