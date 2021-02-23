@@ -28,12 +28,7 @@ return [
     'label' => 'LTI Client Diagnostic',
     'description' => 'Grants access to the client diagnostic functionality using LTI',
     'license' => 'GPL-2.0',
-    'version' => '2.1.0',
     'author' => 'Open Assessment Technologies SA',
-    'requires' => [
-        'taoLti' => '>=7.0.0',
-        'taoClientDiagnostic' => '>=5.0.3.1'
-    ],
     'managementRole' => 'http://www.tao.lu/Ontologies/generis.rdf#ltiClientdiagManager',
     'acl' => [
         [AccessRule::GRANT, LtiRoles::CONTEXT_TEACHING_ASSISTANT, ['ext'=>'ltiClientdiag']],
