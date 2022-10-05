@@ -1,35 +1,34 @@
 {
-
     "name": "oat-sa/extension-lti-clientdiag",
-    "description" : "Grants access to the client diagnostic functionalities using LTI",
-    "type" : "tao-extension",
-    "authors" : [
+    "description": "Grants access to the client diagnostic functionalities using LTI",
+    "type": "tao-extension",
+    "authors": [
         {
-        "name": "Open Assessment Technologies SA"
+            "name": "Open Assessment Technologies SA"
         }
     ],
-    "keywords" : [
+    "keywords": [
         "tao",
         "computer-based-assessment"
     ],
-    "homepage" : "http://www.taotesting.com",
-    "license" : [
+    "homepage": "http://www.taotesting.com",
+    "license": [
         "GPL-2.0"
     ],
-    "extra" : {
-        "tao-extension-name" : "ltiClientdiag"
+    "extra": {
+        "tao-extension-name": "ltiClientdiag"
     },
-    "minimum-stability" : "dev",
+    "minimum-stability": "dev",
     "require": {
         "oat-sa/oatbox-extension-installer": "~1.1||dev-master",
-        "oat-sa/extension-tao-clientdiag" : ">=8.0.0",
-        "oat-sa/generis" : ">=14.0.0",
-        "oat-sa/tao-core" : ">=47.0.0",
-        "oat-sa/extension-tao-lti" : ">=12.0.0"
+        "oat-sa/extension-tao-clientdiag": ">=8.0.0",
+        "oat-sa/generis": ">=15.22",
+        "oat-sa/tao-core": ">=50.24.6",
+        "oat-sa/extension-tao-lti": ">=12.0.0"
     },
-    "autoload" : {
-        "psr-4" : {
-            "oat\\ltiClientdiag\\" : ""
+    "autoload": {
+        "psr-4": {
+            "oat\\ltiClientdiag\\": ""
         }
-    } 
+    }
 }
