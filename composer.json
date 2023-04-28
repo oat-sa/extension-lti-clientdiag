@@ -23,7 +23,7 @@
         "oat-sa/oatbox-extension-installer": "~1.1||dev-master",
         "oat-sa/extension-tao-clientdiag": "dev-feature/AUT-2995",
         "oat-sa/generis": ">=15.22",
-        "oat-sa/tao-core": ">=50.24.6",
+        "oat-sa/tao-core": "dev-feature/AUT-2995",
         "oat-sa/extension-tao-lti": "dev-feature/AUT-2995"
     },
     "autoload": {
